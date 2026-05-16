@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | PathFinder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Dashboard Specific Styles */
+        body {
+            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(11, 15, 25, 0.95), rgba(26, 31, 46, 0.85));
+            z-index: -1;
+        }
+        
+        .dashboard-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-right: 1px solid var(--glass-border);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        .sidebar-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 3rem;
+        }
+        .sidebar-logo span { color: var(--accent-primary); }
+
+        .nav-menu { list-style: none; flex: 1; }
+        .nav-item { margin-bottom: 1rem; }
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .nav-item a:hover, .nav-item.active a {
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--text-primary);
+            box-shadow: inset 4px 0 0 var(--accent-primary);
+        }
+        .nav-icon { font-size: 1.2rem; }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 2rem 3rem;
+            overflow-y: auto;
+        }
+
+        /* Topbar */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .search-bar input {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            color: white;
+            width: 300px;
+            font-family: inherit;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .profile-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-primary);
+        }
+
+        /* Dashboard Grid */
+        .welcome-banner {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
+            border: 1px solid var(--accent-primary);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-banner h1 { margin-bottom: 0.5rem; font-size: 2.5rem; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-secondary);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 15px;
+        }
+
+        .stat-info h3 { font-size: 2rem; margin-bottom: 0; color: var(--text-primary); }
+        .stat-info p { margin-bottom: 0; font-size: 0.9rem; color: var(--text-secondary); }
+
+        .section-title {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .activity-list { list-style: none; }
+        .activity-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .activity-item:last-child { border-bottom: none; }
+        .activity-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            margin-top: 6px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar fade-right">
+            <div class="sidebar-logo">Path<span>Finder</span></div>
+            <ul class="nav-menu">
+                <li class="nav-item active"><a href="#"><span class="nav-icon">📊</span> Overview</a></li>
+                <li class="nav-item"><a href="index.html#paths"><span class="nav-icon">🧭</span> Discover Paths</a></li>
+                <li class="nav-item"><a href="#"><span class="nav-icon">🤝</span> My Mentors</a></li>
+                <li class="nav-item"><a href="#"><span class="nav-icon">🎓</span> Saved Resources</a></li>
+                <li class="nav-item"><a href="#"><span class="nav-icon">⚙️</span> Settings</a></li>
+            </ul>
+            <a href="index.html" class="btn-secondary btn-sm" style="text-align: center;">Log Out</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <div class="topbar fade-in">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search careers, mentors...">
+                </div>
+                <div class="user-profile">
+                    <button id="notificationBtn" class="notification-btn">
+                        🔔 <span id="notificationBadge" class="badge">2</span>
+                    </button>
+                    <!-- Real Professional Unsplash Profile Image -->
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="User Profile" class="profile-img">
+                </div>
+            </div>
+
+            <!-- Welcome Banner -->
+            <div class="welcome-banner fade-up">
+                <h1>Welcome back, <span class="gradient-text">Alex!</span></h1>
+                <p>You're making great progress. Keep exploring your future.</p>
+                <button class="btn-primary mt-1">Continue Learning</button>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid fade-up delay-1">
+                <div class="stat-card">
+                    <div class="stat-icon">🌟</div>
+                    <div class="stat-info">
+                        <h3>4</h3>
+                        <p>Saved Careers</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-info">
+                        <h3>2</h3>
+                        <p>Upcoming Meetings</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-info">
+                        <h3>1</h3>
+                        <p>Course Completed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Lower Grid -->
+            <div class="dashboard-grid">
+                <!-- Recommended -->
+                <div class="glass-card fade-up delay-2">
+                    <h2 class="section-title">Recommended Paths</h2>
+                    <div class="grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="card" style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 15px;">
+                            <h3>💻 Cybersecurity Analyst</h3>
+                            <p>High demand role matching your logical skills.</p>
+                            <a href="#" class="card-link mt-1">View Path &rarr;</a>
+                        </div>
+                        <div class="card" style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 15px;">
+                            <h3>🎨 UX/UI Designer</h3>
+                            <p>Blend your creativity with tech.</p>
+                            <a href="#" class="card-link mt-1">View Path &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="glass-card fade-up delay-3">
+                    <h2 class="section-title">Recent Activity</h2>
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <div class="activity-dot"></div>
+                            <div>
+                                <h4 style="margin-bottom: 0.2rem;">Mentorship Call</h4>
+                                <p style="font-size: 0.85rem;">Scheduled with Sarah Jenkins for Friday.</p>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-dot" style="background: var(--accent-secondary);"></div>
+                            <div>
+                                <h4 style="margin-bottom: 0.2rem;">Saved a Resource</h4>
+                                <p style="font-size: 0.85rem;">'Top 10 Tech Scholarships 2026'</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="notification-container" class="notification-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>

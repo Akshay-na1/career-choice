@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PathFinder | Empowering Youth for the Future</title>
+    <meta name="description" content="Discover career paths, mentorship, and resources tailored for resilient youth and orphanage students building their futures.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Path<span>Finder</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#paths">Career Paths</a></li>
+                <li><a href="#mentorship">Mentorship</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="notificationBtn" class="notification-btn">
+                    🔔 <span id="notificationBadge" class="badge hidden">0</span>
+                </button>
+                <a href="login.html" class="btn-secondary btn-sm">Login</a>
+                <a href="#contact" class="btn-primary btn-sm">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="fade-up">Your Past Doesn't Define Your <span class="gradient-text">Future</span>.</h1>
+            <p class="fade-up delay-1">We provide guidance, mentorship, and resources to help orphanage students and resilient youth discover their dream careers and achieve financial independence.</p>
+            <div class="hero-buttons fade-up delay-2">
+                <a href="#paths" class="btn-primary">Explore Careers</a>
+                <a href="#mentorship" class="btn-secondary">Find a Mentor</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="paths" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Discover Your Path</h2>
+                <p>Explore different career fields, understand what they entail, and find the resources you need to get started.</p>
+            </div>
+            <div class="grid cards">
+                <div class="card glass-card fade-up">
+                    <div class="card-icon">💻</div>
+                    <h3>Technology</h3>
+                    <p>Dive into coding, design, and IT. High demand, great salaries, and remote work opportunities.</p>
+                    <button class="card-link career-btn" data-career="tech">Learn More &rarr;</button>
+                </div>
+                <div class="card glass-card fade-up delay-1">
+                    <div class="card-icon">🩺</div>
+                    <h3>Healthcare</h3>
+                    <p>Make a difference by becoming a nurse, technician, or care worker. Secure and rewarding.</p>
+                    <button class="card-link career-btn" data-career="health">Learn More &rarr;</button>
+                </div>
+                <div class="card glass-card fade-up delay-2">
+                    <div class="card-icon">🛠️</div>
+                    <h3>Skilled Trades</h3>
+                    <p>Hands-on work like electrical, plumbing, and carpentry. Essential jobs with excellent pay.</p>
+                    <button class="card-link career-btn" data-career="trades">Learn More &rarr;</button>
+                </div>
+                <div class="card glass-card fade-up delay-3">
+                    <div class="card-icon">🎨</div>
+                    <h3>Creative Arts</h3>
+                    <p>Express yourself through design, writing, and media. Turn your passion into a profession.</p>
+                    <button class="card-link career-btn" data-career="arts">Learn More &rarr;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mentorship" class="section dark-section">
+        <div class="container split-layout">
+            <div class="content fade-right">
+                <h2>Guided by Experience</h2>
+                <p>You don't have to walk this path alone. Connect with professionals who have been in your shoes and are eager to guide you through your journey.</p>
+                <ul class="feature-list">
+                    <li>✓ 1-on-1 personalized mentoring</li>
+                    <li>✓ Resume building and interview prep</li>
+                    <li>✓ Networking opportunities</li>
+                    <li>✓ Emotional and professional support</li>
+                </ul>
+                <a href="#" class="btn-primary mt-2">Connect with a Mentor</a>
+            </div>
+            <div class="image-wrapper fade-left">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Professional mentorship session in a modern workspace" class="rounded-image shadow-glow">
+            </div>
+        </div>
+    </section>
+
+    <section id="resources" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Essential Resources</h2>
+                <p>We've compiled everything you need to start your journey on the right foot.</p>
+            </div>
+            <div class="grid resources-grid">
+                <a href="#" class="resource-item glass-card fade-up">
+                    <h4>🎓 Scholarships & Grants</h4>
+                    <p>Financial aid specifically for orphanage alumni.</p>
+                </a>
+                <a href="#" class="resource-item glass-card fade-up delay-1">
+                    <h4>🏠 Housing Assistance</h4>
+                    <p>Programs to help you transition to independent living.</p>
+                </a>
+                <a href="#" class="resource-item glass-card fade-up delay-2">
+                    <h4>📚 Skill Building</h4>
+                    <p>Free courses and certifications to boost your resume.</p>
+                </a>
+                <a href="#" class="resource-item glass-card fade-up delay-3">
+                    <h4>💼 Job Board</h4>
+                    <p>Entry-level positions and internships from partner companies.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h2>Path<span>Finder</span></h2>
+                <p>Empowering resilient youth to build bright futures.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#paths">Careers</a></li>
+                    <li><a href="#mentorship">Mentorship</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@pathfinder.org</p>
+                <p>Phone: 1-800-FUTURE</p>
+                <a href="#" class="btn-primary btn-sm mt-1">Send a Message</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PathFinder Initiative. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification-container" class="notification-container"></div>
+
+    <!-- Career Details Modal -->
+    <div id="careerModal" class="modal-overlay hidden">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="modal-header">
+                <span id="modalIcon" class="modal-icon"></span>
+                <h2 id="modalTitle">Career Title</h2>
+            </div>
+            <div class="modal-body">
+                <p id="modalDescription" class="modal-desc"></p>
+                
+                <div class="modal-section">
+                    <h3>🎓 Top Recommended Colleges</h3>
+                    <ul id="modalColleges" class="modal-list"></ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>📚 Recommended Degrees / Paths</h3>
+                    <ul id="modalDegrees" class="modal-list"></ul>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn-primary w-full">Find Scholarships</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
